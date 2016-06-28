@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.eurekaclinical</groupId>
         <artifactId>eurekaclinical-parent-standard-deps</artifactId>
-        <version>1-Alpha-3</version>
+        <version>1-Alpha-4</version>
     </parent>
 
     <url>https://github.com/eurekaclinical/eurekaclinical-user-agreement-service.git</url>
@@ -32,7 +32,7 @@
     </issueManagement>
     
     <properties>
-        <eurekaclinical-common-version>1.0-Alpha-1</eurekaclinical-common-version>
+        <eurekaclinical-common-version>1.0-Alpha-2</eurekaclinical-common-version>
         
         <!-- The properties below are for the maven tomcat7:run functionality only -->
         <cas-server-version>2.0-Alpha-5</cas-server-version>
