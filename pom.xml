@@ -32,10 +32,10 @@
     </issueManagement>
     
     <properties>
-        <eurekaclinical-common-version>1.0-Alpha-2</eurekaclinical-common-version>
+        <eurekaclinical-common-version>1.0-Alpha-4</eurekaclinical-common-version>
         
         <!-- The properties below are for the maven tomcat7:run functionality only -->
-        <cas-server-version>2.0-Alpha-5</cas-server-version>
+        <cas-mock-version>1.0-Alpha-1</cas-mock-version>
         <tomcat.httpsPort>8443</tomcat.httpsPort>
     </properties>
 	
@@ -155,8 +155,8 @@
                     <webapps>
                         <webapp>
                             <groupId>org.eurekaclinical</groupId>
-                            <artifactId>cas-server</artifactId>
-                            <version>${cas-server-version}</version>
+                            <artifactId>cas-mock</artifactId>
+                            <version>${cas-mock-version}</version>
                             <type>war</type>
                             <asWebapp>true</asWebapp>
                         </webapp>
@@ -199,10 +199,6 @@
             <groupId>org.eurekaclinical</groupId>
             <artifactId>eurekaclinical-common</artifactId>
             <version>${eurekaclinical-common-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
         </dependency>
         <dependency>
             <groupId>com.sun.jersey.jersey-test-framework</groupId>

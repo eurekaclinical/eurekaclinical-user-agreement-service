@@ -36,5 +36,5 @@ public class UserAgreementServiceProperties extends EurekaClinicalProperties {
     public String getProxyCallbackServer() {
         return getValue("eurekaclinical.useragreementservice.callbackserver");
     }
-    
+
 }

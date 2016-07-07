@@ -21,7 +21,10 @@ package org.eurekaclinical.useragreementservice.config;
  */
 
 import com.google.inject.AbstractModule;
+import com.google.inject.TypeLiteral;
 import org.eurekaclinical.standardapis.dao.UserDao;
+import org.eurekaclinical.standardapis.entity.RoleEntity;
+import org.eurekaclinical.standardapis.entity.UserEntity;
 
 import org.eurekaclinical.useragreementservice.dao.JpaUserAgreementDao;
 import org.eurekaclinical.useragreementservice.dao.JpaUserDao;
@@ -35,6 +38,6 @@ public class AppModule extends AbstractModule {
     @Override
     protected void configure() {
         bind(UserAgreementDao.class).to(JpaUserAgreementDao.class);
-        bind(UserDao.class).to(JpaUserDao.class);
+        bind(new TypeLiteral<UserDao<? extends UserEntity<? extends RoleEntity>>>() {}).to(JpaUserDao.class);
     }
 }
