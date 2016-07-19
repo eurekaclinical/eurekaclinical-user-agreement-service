@@ -74,7 +74,7 @@
     <changeSet author="arpost" id="3">
         <insert tableName="ROLES">
             <column name="ID" valueSequenceNext="ROLE_SEQ"/>
-            <column name="DEFAULTROLE" valueBoolean="false"/>
+            <column name="DEFAULTROLE" valueBoolean="true"/>
             <column name="NAME" value="admin"/>
         </insert>
         <rollback>
