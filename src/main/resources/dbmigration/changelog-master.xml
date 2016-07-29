@@ -27,6 +27,9 @@
                          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd                                                                                  
                          http://www.liquibase.org/xml/ns/dbchangelog                                                                                    
                          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
+    
+    <property name="eurekaclinical.superuser.username" value="superuser"/>
+    
     <changeSet author="arpost" id="1">
         <createTable tableName="USER_AGREEMENT_STATUSES">
             <column name="ID" type="BIGINT">
@@ -102,5 +105,15 @@
             </column>
         </addColumn>
         <createSequence sequenceName="USER_AGR_SEQ"/>
+    </changeSet>
+    <changeSet author="arpost" id="5">
+        <insert tableName="USERS">
+            <column name="ID" valueSequenceNext="USER_SEQ"/>
+            <column name="USERNAME" value="${eurekaclinical.superuser.username}"/>
+        </insert>
+        <insert tableName="USER_ROLE">
+            <column name="USER_ID" valueComputed="(SELECT ID FROM USERS WHERE USERNAME='${eurekaclinical.superuser.username}')"/>
+            <column name="ROLE_ID" valueComputed="(SELECT ID FROM ROLES WHERE NAME='admin')"/>
+        </insert>
     </changeSet>
 </databaseChangeLog>
