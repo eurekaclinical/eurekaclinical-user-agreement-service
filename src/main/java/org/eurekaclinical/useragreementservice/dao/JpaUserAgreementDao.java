@@ -20,39 +20,25 @@ package org.eurekaclinical.useragreementservice.dao;
  * #L%
  */
 
-import javax.persistence.EntityManager;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import java.text.MessageFormat;
+import java.util.Date;
+import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Provider;
+import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import javax.persistence.NonUniqueResultException;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 import org.eurekaclinical.standardapis.dao.GenericDao;
-
 import org.eurekaclinical.useragreementservice.entity.UserAgreementEntity;
 import org.eurekaclinical.useragreementservice.entity.UserAgreementEntity_;
 
 /**
- * Implements the {@link UserAgreementDao} interface, with the use of JPA entity
- * managers.
  *
  * @author Andrew Post
- *
  */
 public class JpaUserAgreementDao extends GenericDao<UserAgreementEntity, Long> implements UserAgreementDao {
-
-    /**
-     * The class level logger.
-     */
-    private static final Logger LOGGER = LoggerFactory.getLogger(JpaUserAgreementDao.class);
 
     /**
      * Construct instance with the given EntityManager provider.
@@ -63,30 +49,53 @@ public class JpaUserAgreementDao extends GenericDao<UserAgreementEntity, Long> i
     public JpaUserAgreementDao(final Provider<EntityManager> inEMProvider) {
         super(UserAgreementEntity.class, inEMProvider);
     }
-
+    
+    /**
+     * Gets the current user agreement.
+     * 
+     * @return a user agreement entity, or <code>null</code> if none has been
+     * created.
+     */
     @Override
-    public UserAgreementEntity getByUsername(String username) {
+    public UserAgreementEntity getCurrent() {
+        UserAgreementEntity result;
         EntityManager entityManager = getEntityManager();
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<UserAgreementEntity> criteriaQuery = builder.createQuery(UserAgreementEntity.class);
         Root<UserAgreementEntity> root = criteriaQuery.from(UserAgreementEntity.class);
-        Path<String> usernamePath = root.get(UserAgreementEntity_.username);
-        TypedQuery<UserAgreementEntity> query = entityManager.createQuery(criteriaQuery.where(
-                builder.equal(usernamePath, username)));
-        UserAgreementEntity result = null;
+        criteriaQuery.where(
+                builder.or(
+                        builder.isNull(root.get(UserAgreementEntity_.expiredAt)),
+                        builder.greaterThanOrEqualTo(root.get(UserAgreementEntity_.expiredAt), new Date())
+                ));
         try {
-            result = query.getSingleResult();
-        } catch (NonUniqueResultException nure) {
-            String msg = MessageFormat.format(
-                    "More than one user with {0} = {1}",
-                    UserAgreementEntity_.username, username);
-            LOGGER.error(msg);
-            throw new AssertionError(msg);
-        } catch (NoResultException nre) {
-            LOGGER.debug("No user with {} = {} and {} = {}",
-                    UserAgreementEntity_.username, username);
+            result = entityManager.createQuery(criteriaQuery).getSingleResult();
+        } catch (NoResultException ex) {
+            result = null;
         }
         return result;
     }
 
+    /**
+     * Updates the user agreement, or creates it if none has been previously
+     * created.
+     * 
+     * @param inText the text of the agreement in Markdown format.
+     * @return a user agreement entity.
+     */
+    @Override
+    public UserAgreementEntity createOrUpdate(String inText) {
+        if (inText == null) {
+            throw new IllegalArgumentException("text cannot be null");
+        }
+        UserAgreementEntity current = getCurrent();
+        Date now = new Date();
+        if (current != null) {
+            current.setExpiredAt(now);
+        }
+        UserAgreementEntity result = new UserAgreementEntity();
+        result.setText(inText);
+        result.setEffectiveAt(now);
+        return create(result);
+    }
 }

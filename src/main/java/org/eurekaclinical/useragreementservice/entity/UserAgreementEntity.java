@@ -19,17 +19,18 @@ package org.eurekaclinical.useragreementservice.entity;
  * limitations under the License.
  * #L%
  */
-
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import org.eurekaclinical.useragreementcommon.comm.UserAgreement;
 
 /**
  *
@@ -45,45 +46,57 @@ public class UserAgreementEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE,
             generator = "USER_AGR_SEQ_GENERATOR")
     private Long id;
-    
-    @Column(unique = true, nullable = false)
-    private String username;
-    
+
+    @Lob
     @Column(nullable = false)
-    private String fullname;
-    
+    private String text;
+
     @Temporal(TemporalType.TIMESTAMP)
-    private Date expiry;
+    @Column(nullable = false)
+    private Date effectiveAt;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date expiredAt;
 
     public Long getId() {
         return id;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public Date getEffectiveAt() {
+        return effectiveAt;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEffectiveAt(Date effectiveAt) {
+        this.effectiveAt = effectiveAt;
     }
 
-    public String getFullname() {
-        return fullname;
+    public Date getExpiredAt() {
+        return expiredAt;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setExpiredAt(Date expiredAt) {
+        this.expiredAt = expiredAt;
     }
 
-    public Date getExpiry() {
-        return expiry;
+    public UserAgreement toUserAgreement() {
+        UserAgreement result = new UserAgreement();
+        result.setText(this.text);
+        result.setId(this.id);
+        result.setEffectiveAt(this.effectiveAt);
+        result.setExpiredAt(this.expiredAt);
+        return result;
     }
 
-    public void setExpiry(Date expiry) {
-        this.expiry = expiry;
-    }
 }

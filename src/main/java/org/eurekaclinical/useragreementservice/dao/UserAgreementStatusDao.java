@@ -1,4 +1,4 @@
-package org.eurekaclinical.useragreementservice.props;
+package org.eurekaclinical.useragreementservice.dao;
 
 /*-
  * #%L
@@ -20,17 +20,18 @@ package org.eurekaclinical.useragreementservice.props;
  * #L%
  */
 
-import org.eurekaclinical.useragreementcommon.props.UserAgreementProperties;
+import org.eurekaclinical.standardapis.dao.Dao;
+import org.eurekaclinical.useragreementservice.entity.UserAgreementStatusEntity;
 
 /**
+ * A data access object interface to retrieve and store information about
+ * Protempa ETL jobs.
  *
- * @author Andrew Post
+ * @author hrathod
+ *
  */
-public class UserAgreementServiceProperties extends UserAgreementProperties {
-    
-    @Override
-    public String getProxyCallbackServer() {
-        return getValue("eurekaclinical.useragreementservice.callbackserver");
-    }
+public interface UserAgreementStatusDao extends Dao<UserAgreementStatusEntity, Long> {
+
+    public UserAgreementStatusEntity getByUsername(String username);
 
 }

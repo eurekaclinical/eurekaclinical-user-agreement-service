@@ -28,15 +28,15 @@
                          http://www.liquibase.org/xml/ns/dbchangelog                                                                                    
                          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.3.xsd">
     <changeSet author="arpost" id="1">
-        <createTable tableName="USER_AGREEMENTS">
+        <createTable tableName="USER_AGREEMENT_STATUSES">
             <column name="ID" type="BIGINT">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="USER_AGREEMENTS_PK"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="USER_AGREEMENT_STATUSES_PK"/>
             </column>
             <column name="USERNAME" type="VARCHAR(255)"/>
             <column name="EXPIRY" type="TIMESTAMP(6)"/>
             <column name="FULLNAME" type="VARCHAR(255)"/>
         </createTable>
-        <createSequence sequenceName="USER_AGR_SEQ"/>
+        <createSequence sequenceName="USER_AGR_STAT_SEQ"/>
     </changeSet>
     <changeSet author="arpost" id="2">
         <createTable tableName="USERS">
@@ -82,5 +82,25 @@
                 <where>ID=1</where>
             </delete>
         </rollback>
+    </changeSet>
+    <changeSet author="arpost" id="4">
+        <createTable tableName="USER_AGREEMENTS">
+            <column name="ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="USER_AGREEMENT_PK"/>
+            </column>
+            <column name="TEXT" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EFFECTIVEAT" type="TIMESTAMP(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EXPIREDAT" type="TIMESTAMP(6)"/>
+        </createTable>
+        <addColumn tableName="USER_AGREEMENT_STATUSES">
+            <column name="USERAGREEMENT_ID" type="BIGINT">
+                <constraints foreignKeyName="USERAGREEMENT_FK" referencedTableName="USER_AGREEMENTS" referencedColumnNames="ID"/>
+            </column>
+        </addColumn>
+        <createSequence sequenceName="USER_AGR_SEQ"/>
     </changeSet>
 </databaseChangeLog>

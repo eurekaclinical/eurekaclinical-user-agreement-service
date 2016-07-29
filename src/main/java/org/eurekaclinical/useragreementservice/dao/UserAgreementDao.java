@@ -32,6 +32,8 @@ import org.eurekaclinical.useragreementservice.entity.UserAgreementEntity;
  */
 public interface UserAgreementDao extends Dao<UserAgreementEntity, Long> {
 
-    public UserAgreementEntity getByUsername(String username);
-
+    UserAgreementEntity getCurrent();
+    
+    UserAgreementEntity createOrUpdate(String inText);
+    
 }

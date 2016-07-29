@@ -1,8 +1,10 @@
-/*
+package org.eurekaclinical.useragreementservice.config;
+
+/*-
  * #%L
- * Eureka Protempa ETL
+ * Eureka! Clinical User Agreement Service
  * %%
- * Copyright (C) 2012 - 2013 Emory University
+ * Copyright (C) 2016 Emory University
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,11 +19,6 @@
  * limitations under the License.
  * #L%
  */
- /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package org.eurekaclinical.useragreementservice.config;
 
 import com.sun.jersey.api.container.filter.RolesAllowedResourceFilterFactory;
 import java.util.HashMap;
@@ -44,7 +41,7 @@ public class ServletTestModule extends JerseyServletModule {
         Map<String, String> params = new HashMap<>();
         params.put("com.sun.jersey.api.json.POJOMappingFeature", "true");
         params.put(PackagesResourceConfig.PROPERTY_PACKAGES,
-                "edu.emory.cci.aiw.cvrg.eureka.etl.resource;edu.emory.cci.aiw.cvrg.eureka.common.json");
+                "org.eurekaclinical.useragreementservice.resource");
         params.put(ResourceConfig.PROPERTY_RESOURCE_FILTER_FACTORIES,
                 RolesAllowedResourceFilterFactory.class.getName());
 

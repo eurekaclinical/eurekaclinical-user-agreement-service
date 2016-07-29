@@ -21,28 +21,17 @@ package org.eurekaclinical.useragreementservice.dao;
  */
 
 import javax.inject.Inject;
-import org.eurekaclinical.standardapis.dao.UserDao;
 import javax.inject.Provider;
 import javax.persistence.EntityManager;
-
 import org.eurekaclinical.useragreementservice.entity.UserEntity;
-import org.eurekaclinical.useragreementservice.entity.UserEntity_;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 /**
- * An implementation of the {@link UserDao} interface, backed by JPA entities
- * and queries.
+ * 
  *
  * @author Andrew Post
  */
-public class JpaUserDao extends org.eurekaclinical.standardapis.dao.JpaUserDao<UserEntity> {
-
-    /**
-     * The class level logger.
-     */
-    private static final Logger LOGGER = LoggerFactory.getLogger(
-            JpaUserDao.class);
+public class JpaUserDao extends org.eurekaclinical.standardapis.dao.AbstractJpaUserDao<UserEntity> {
 
     /**
      * Create an object with the give entity manager.
@@ -53,11 +42,6 @@ public class JpaUserDao extends org.eurekaclinical.standardapis.dao.JpaUserDao<U
     @Inject
     public JpaUserDao(final Provider<EntityManager> inEMProvider) {
         super(UserEntity.class, inEMProvider);
-    }
-
-    @Override
-    public UserEntity getByUsername(String username) {
-        return getUniqueByAttribute(UserEntity_.username, username);
     }
 
 }

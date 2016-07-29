@@ -1,8 +1,10 @@
-/*
+package org.eurekaclinical.useragreementservice.config;
+
+/*-
  * #%L
- * Eureka Protempa ETL
+ * Eureka! Clinical User Agreement Service
  * %%
- * Copyright (C) 2012 - 2013 Emory University
+ * Copyright (C) 2016 Emory University
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,22 +19,34 @@
  * limitations under the License.
  * #L%
  */
-package org.eurekaclinical.useragreementservice.config;
 
 import com.google.inject.AbstractModule;
+import com.google.inject.TypeLiteral;
 import com.google.inject.persist.jpa.JpaPersistModule;
+import org.eurekaclinical.standardapis.dao.RoleDao;
+import org.eurekaclinical.standardapis.dao.UserDao;
+import org.eurekaclinical.useragreementservice.dao.JpaRoleDao;
 import org.eurekaclinical.useragreementservice.dao.JpaUserAgreementDao;
+import org.eurekaclinical.useragreementservice.dao.JpaUserAgreementStatusDao;
+import org.eurekaclinical.useragreementservice.dao.JpaUserDao;
 import org.eurekaclinical.useragreementservice.dao.UserAgreementDao;
+import org.eurekaclinical.useragreementservice.dao.UserAgreementStatusDao;
+import org.eurekaclinical.useragreementservice.entity.RoleEntity;
+import org.eurekaclinical.useragreementservice.entity.UserEntity;
 
 /**
  *
- * @author hrathod
+ * @author Andrew Post
  */
 public class AppTestModule extends AbstractModule {
 
-	@Override
-	protected void configure() {
-		install(new JpaPersistModule("user-agreement-service-jpa-unit"));
-		bind(UserAgreementDao.class).to(JpaUserAgreementDao.class);
-	}
+    @Override
+    protected void configure() {
+        install(new JpaPersistModule("user-agreement-service-jpa-unit"));
+        bind(UserAgreementDao.class).to(JpaUserAgreementDao.class);
+        bind(UserAgreementStatusDao.class).to(JpaUserAgreementStatusDao.class);
+        bind(new TypeLiteral<UserDao<UserEntity>>() {}).to(JpaUserDao.class);
+        bind(new TypeLiteral<UserDao<? extends org.eurekaclinical.standardapis.entity.UserEntity<? extends org.eurekaclinical.standardapis.entity.RoleEntity>>>() {}).to(JpaUserDao.class);
+        bind(new TypeLiteral<RoleDao<RoleEntity>>() {}).to(JpaRoleDao.class);
+    }
 }

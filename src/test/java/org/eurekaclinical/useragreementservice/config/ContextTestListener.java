@@ -1,8 +1,10 @@
-/*
+package org.eurekaclinical.useragreementservice.config;
+
+/*-
  * #%L
- * Eureka Protempa ETL
+ * Eureka! Clinical User Agreement Service
  * %%
- * Copyright (C) 2012 - 2013 Emory University
+ * Copyright (C) 2016 Emory University
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,7 +19,6 @@
  * limitations under the License.
  * #L%
  */
-package org.eurekaclinical.useragreementservice.config;
 
 import javax.servlet.ServletContextEvent;
 
@@ -30,7 +31,7 @@ import org.eurekaclinical.common.config.InjectorSupport;
 
 /**
  *
- * @author hrathod
+ * @author Andrew Post
  */
 public class ContextTestListener extends GuiceServletContextListener {
 

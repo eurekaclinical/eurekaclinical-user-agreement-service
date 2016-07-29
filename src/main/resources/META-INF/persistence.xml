@@ -26,9 +26,10 @@
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>jdbc/EurekaBackend</jta-data-source>
 	-->
-    <class>org.eurekaclinical.useragreementservice.entity.UserEntity</class>
     <class>org.eurekaclinical.useragreementservice.entity.UserAgreementEntity</class>
+    <class>org.eurekaclinical.useragreementservice.entity.UserAgreementStatusEntity</class>
     <class>org.eurekaclinical.useragreementservice.entity.RoleEntity</class>
+    <class>org.eurekaclinical.useragreementservice.entity.UserEntity</class>
     <properties>
       <!-- Disable the second-level cache -->
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
