@@ -19,8 +19,6 @@ package org.eurekaclinical.useragreementservice.config;
  * limitations under the License.
  * #L%
  */
-import java.util.HashMap;
-import java.util.Map;
 import org.eurekaclinical.common.config.AbstractAuthorizingJerseyServletModuleWithPersist;
 import org.eurekaclinical.useragreementservice.props.UserAgreementServiceProperties;
 
@@ -39,16 +37,6 @@ public class UserAgreementServletModule extends AbstractAuthorizingJerseyServlet
     public UserAgreementServletModule(UserAgreementServiceProperties inProperties) {
         super(inProperties, PACKAGE_NAMES);
         this.properties = inProperties;
-    }
-
-    @Override
-    public Map<String, String> getCasValidationFilterInitParams() {
-        Map<String, String> params = new HashMap<>();
-        params.put("casServerUrlPrefix", this.properties.getCasUrl());
-        params.put("serverName", this.properties.getProxyCallbackServer());
-        params.put("redirectAfterValidation", "false");
-        params.put("acceptAnyProxy", "true");
-        return params;
     }
 
 }
