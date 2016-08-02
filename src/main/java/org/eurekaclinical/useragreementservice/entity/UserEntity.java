@@ -19,9 +19,9 @@ package org.eurekaclinical.useragreementservice.entity;
  * limitations under the License.
  * #L%
  */
-
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -76,6 +76,7 @@ public class UserEntity implements org.eurekaclinical.standardapis.entity.UserEn
      * Create an empty User object.
      */
     public UserEntity() {
+        this.roles = new ArrayList<>();
     }
 
     /**
@@ -125,7 +126,7 @@ public class UserEntity implements org.eurekaclinical.standardapis.entity.UserEn
      */
     @Override
     public List<RoleEntity> getRoles() {
-        return this.roles;
+        return new ArrayList<>(this.roles);
     }
 
     /**
@@ -135,12 +136,49 @@ public class UserEntity implements org.eurekaclinical.standardapis.entity.UserEn
      */
     @Override
     public void setRoles(final List<RoleEntity> inRoles) {
-        this.roles = inRoles;
+        if (inRoles == null) {
+            this.roles = new ArrayList<>();
+        } else {
+            this.roles = new ArrayList<>(inRoles);
+        }
+    }
+    
+    public void addRole(RoleEntity inRole) {
+        this.roles.add(inRole);
+    }
+    
+    public void removeRole(RoleEntity inRole) {
+        this.roles.remove(inRole);
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 73 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final UserEntity other = (UserEntity) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
     public String toString() {
         return "UserEntity{" + "id=" + id + ", username=" + username + ", roles=" + roles + '}';
     }
-    
+
 }

@@ -20,6 +20,7 @@ package org.eurekaclinical.useragreementservice.entity;
  * #L%
  */
 
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -61,7 +62,6 @@ public class RoleEntity implements org.eurekaclinical.standardapis.entity.RoleEn
      * Create an empty role.
      */
     public RoleEntity() {
-        super();
     }
 
     /**
@@ -126,35 +126,28 @@ public class RoleEntity implements org.eurekaclinical.standardapis.entity.RoleEn
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (!(o instanceof RoleEntity)) {
-            return false;
-        }
-
-        RoleEntity role = (RoleEntity) o;
-
-        if (defaultRole != role.defaultRole) {
-            return false;
-        }
-        if (!id.equals(role.id)) {
-            return false;
-        }
-        if (!name.equals(role.name)) {
-            return false;
-        }
-
-        return true;
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.id);
+        return hash;
     }
 
     @Override
-    public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + (defaultRole ? 1 : 0);
-        return result;
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final RoleEntity other = (RoleEntity) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
     }
 
     @Override
