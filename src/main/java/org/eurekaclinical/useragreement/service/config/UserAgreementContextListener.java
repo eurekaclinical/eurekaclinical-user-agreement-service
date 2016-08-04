@@ -1,4 +1,4 @@
-package org.eurekaclinical.useragreementservice.config;
+package org.eurekaclinical.useragreement.service.config;
 
 /*-
  * #%L
@@ -26,7 +26,7 @@ import com.google.inject.Injector;
 import com.google.inject.Module;
 import com.google.inject.persist.jpa.JpaPersistModule;
 import com.google.inject.servlet.GuiceServletContextListener;
-import org.eurekaclinical.useragreementservice.props.UserAgreementServiceProperties;
+import org.eurekaclinical.useragreement.service.props.UserAgreementServiceProperties;
 
 /**
  * Loaded up on application initialization, sets up the application with Guice

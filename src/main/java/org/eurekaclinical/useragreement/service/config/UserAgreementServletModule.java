@@ -1,4 +1,4 @@
-package org.eurekaclinical.useragreementservice.config;
+package org.eurekaclinical.useragreement.service.config;
 
 /*-
  * #%L
@@ -20,7 +20,7 @@ package org.eurekaclinical.useragreementservice.config;
  * #L%
  */
 import org.eurekaclinical.common.config.AbstractAuthorizingJerseyServletModuleWithPersist;
-import org.eurekaclinical.useragreementservice.props.UserAgreementServiceProperties;
+import org.eurekaclinical.useragreement.service.props.UserAgreementServiceProperties;
 
 /**
  * A Guice configuration module for setting up the web infrastructure and
@@ -31,7 +31,7 @@ import org.eurekaclinical.useragreementservice.props.UserAgreementServicePropert
  */
 public class UserAgreementServletModule extends AbstractAuthorizingJerseyServletModuleWithPersist {
 
-    private static final String PACKAGE_NAMES = "org.eurekaclinical.useragreementservice.resource";
+    private static final String PACKAGE_NAMES = "org.eurekaclinical.useragreement.service.resource";
     private final UserAgreementServiceProperties properties;
 
     public UserAgreementServletModule(UserAgreementServiceProperties inProperties) {

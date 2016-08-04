@@ -1,4 +1,4 @@
-package org.eurekaclinical.useragreementservice.dao;
+package org.eurekaclinical.useragreement.service.dao;
 
 /*-
  * #%L
@@ -37,8 +37,8 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 import org.eurekaclinical.standardapis.dao.GenericDao;
 
-import org.eurekaclinical.useragreementservice.entity.UserAgreementStatusEntity;
-import org.eurekaclinical.useragreementservice.entity.UserAgreementStatusEntity_;
+import org.eurekaclinical.useragreement.service.entity.UserAgreementStatusEntity;
+import org.eurekaclinical.useragreement.service.entity.UserAgreementStatusEntity_;
 
 /**
  * Implements the {@link UserAgreementStatusDao} interface, with the use of JPA entity

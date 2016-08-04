@@ -1,4 +1,4 @@
-package org.eurekaclinical.useragreementservice.resource;
+package org.eurekaclinical.useragreement.service.resource;
 
 /*-
  * #%L
@@ -25,7 +25,7 @@ import javax.ws.rs.Path;
 import org.eurekaclinical.standardapis.dao.RoleDao;
 import org.eurekaclinical.common.comm.Role;
 import org.eurekaclinical.common.resource.AbstractRoleResource;
-import org.eurekaclinical.useragreementservice.entity.RoleEntity;
+import org.eurekaclinical.useragreement.service.entity.RoleEntity;
 
 
 /**

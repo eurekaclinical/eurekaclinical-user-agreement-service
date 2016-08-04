@@ -1,4 +1,4 @@
-package org.eurekaclinical.useragreementservice.dao;
+package org.eurekaclinical.useragreement.service.dao;
 
 /*-
  * #%L
@@ -20,20 +20,29 @@ package org.eurekaclinical.useragreementservice.dao;
  * #L%
  */
 
-import org.eurekaclinical.standardapis.dao.Dao;
-import org.eurekaclinical.useragreementservice.entity.UserAgreementEntity;
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.persistence.EntityManager;
+import org.eurekaclinical.standardapis.dao.AbstractJpaRoleDao;
+import org.eurekaclinical.useragreement.service.entity.RoleEntity;
+
 
 /**
- * A data access object interface to retrieve and store information about
- * Protempa ETL jobs.
+ * 
  *
- * @author hrathod
- *
+ * @author Andrew Post
  */
-public interface UserAgreementDao extends Dao<UserAgreementEntity, Long> {
+public class JpaRoleDao extends AbstractJpaRoleDao<RoleEntity> {
 
-    UserAgreementEntity getCurrent();
-    
-    UserAgreementEntity createOrUpdate(String inText);
-    
+    /**
+     * Create an object with the give entity manager.
+     *
+     * @param inEMProvider The entity manager to be used for communication with
+     * the data store.
+     */
+    @Inject
+    public JpaRoleDao(final Provider<EntityManager> inEMProvider) {
+        super(RoleEntity.class, inEMProvider);
+    }
+
 }

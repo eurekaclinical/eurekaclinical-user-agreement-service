@@ -1,4 +1,4 @@
-package org.eurekaclinical.useragreementservice.resource;
+package org.eurekaclinical.useragreement.service.resource;
 
 /*-
  * #%L
@@ -36,12 +36,12 @@ import org.eurekaclinical.common.util.UserSupport;
 import org.eurekaclinical.standardapis.exception.HttpStatusException;
 import org.eurekaclinical.useragreementcommon.comm.UserAgreement;
 import org.eurekaclinical.useragreementcommon.comm.UserAgreementStatus;
-import org.eurekaclinical.useragreementservice.dao.UserAgreementDao;
-import org.eurekaclinical.useragreementservice.entity.UserAgreementStatusEntity;
+import org.eurekaclinical.useragreement.service.dao.UserAgreementDao;
+import org.eurekaclinical.useragreement.service.entity.UserAgreementStatusEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.eurekaclinical.useragreementservice.dao.UserAgreementStatusDao;
-import org.eurekaclinical.useragreementservice.entity.UserAgreementEntity;
+import org.eurekaclinical.useragreement.service.dao.UserAgreementStatusDao;
+import org.eurekaclinical.useragreement.service.entity.UserAgreementEntity;
 
 /**
  * RESTful end-point for {@link UserAgreementStatusEntity} related methods.

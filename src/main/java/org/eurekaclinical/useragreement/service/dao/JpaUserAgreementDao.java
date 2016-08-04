@@ -1,4 +1,4 @@
-package org.eurekaclinical.useragreementservice.dao;
+package org.eurekaclinical.useragreement.service.dao;
 
 /*-
  * #%L
@@ -21,18 +21,16 @@ package org.eurekaclinical.useragreementservice.dao;
  */
 
 import java.util.Date;
-import java.util.List;
 import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
-import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import org.eurekaclinical.standardapis.dao.GenericDao;
-import org.eurekaclinical.useragreementservice.entity.UserAgreementEntity;
-import org.eurekaclinical.useragreementservice.entity.UserAgreementEntity_;
+import org.eurekaclinical.useragreement.service.entity.UserAgreementEntity;
+import org.eurekaclinical.useragreement.service.entity.UserAgreementEntity_;
 
 /**
  *

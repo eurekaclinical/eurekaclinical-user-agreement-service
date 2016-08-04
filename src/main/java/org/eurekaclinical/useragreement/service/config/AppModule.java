@@ -1,4 +1,4 @@
-package org.eurekaclinical.useragreementservice.config;
+package org.eurekaclinical.useragreement.service.config;
 
 /*-
  * #%L
@@ -24,15 +24,14 @@ import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import org.eurekaclinical.standardapis.dao.RoleDao;
 import org.eurekaclinical.standardapis.dao.UserDao;
-import org.eurekaclinical.useragreementservice.dao.JpaRoleDao;
-import org.eurekaclinical.useragreementservice.dao.JpaUserAgreementDao;
-
-import org.eurekaclinical.useragreementservice.dao.JpaUserAgreementStatusDao;
-import org.eurekaclinical.useragreementservice.dao.JpaUserDao;
-import org.eurekaclinical.useragreementservice.dao.UserAgreementDao;
-import org.eurekaclinical.useragreementservice.dao.UserAgreementStatusDao;
-import org.eurekaclinical.useragreementservice.entity.RoleEntity;
-import org.eurekaclinical.useragreementservice.entity.UserEntity;
+import org.eurekaclinical.useragreement.service.dao.JpaRoleDao;
+import org.eurekaclinical.useragreement.service.dao.JpaUserAgreementDao;
+import org.eurekaclinical.useragreement.service.dao.JpaUserAgreementStatusDao;
+import org.eurekaclinical.useragreement.service.dao.JpaUserDao;
+import org.eurekaclinical.useragreement.service.dao.UserAgreementDao;
+import org.eurekaclinical.useragreement.service.dao.UserAgreementStatusDao;
+import org.eurekaclinical.useragreement.service.entity.RoleEntity;
+import org.eurekaclinical.useragreement.service.entity.UserEntity;
 
 /**
  * @author arpost

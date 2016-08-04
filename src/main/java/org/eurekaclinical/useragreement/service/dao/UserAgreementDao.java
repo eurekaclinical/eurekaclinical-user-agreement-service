@@ -1,4 +1,4 @@
-package org.eurekaclinical.useragreementservice.dao;
+package org.eurekaclinical.useragreement.service.dao;
 
 /*-
  * #%L
@@ -21,7 +21,7 @@ package org.eurekaclinical.useragreementservice.dao;
  */
 
 import org.eurekaclinical.standardapis.dao.Dao;
-import org.eurekaclinical.useragreementservice.entity.UserAgreementStatusEntity;
+import org.eurekaclinical.useragreement.service.entity.UserAgreementEntity;
 
 /**
  * A data access object interface to retrieve and store information about
@@ -30,8 +30,10 @@ import org.eurekaclinical.useragreementservice.entity.UserAgreementStatusEntity;
  * @author hrathod
  *
  */
-public interface UserAgreementStatusDao extends Dao<UserAgreementStatusEntity, Long> {
+public interface UserAgreementDao extends Dao<UserAgreementEntity, Long> {
 
-    public UserAgreementStatusEntity getByUsername(String username);
-
+    UserAgreementEntity getCurrent();
+    
+    UserAgreementEntity createOrUpdate(String inText);
+    
 }

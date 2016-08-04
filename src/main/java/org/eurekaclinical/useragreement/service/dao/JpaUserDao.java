@@ -1,4 +1,4 @@
-package org.eurekaclinical.useragreementservice.props;
+package org.eurekaclinical.useragreement.service.dao;
 
 /*-
  * #%L
@@ -20,17 +20,28 @@ package org.eurekaclinical.useragreementservice.props;
  * #L%
  */
 
-import org.eurekaclinical.useragreementcommon.props.UserAgreementProperties;
+import javax.inject.Inject;
+import javax.inject.Provider;
+import javax.persistence.EntityManager;
+import org.eurekaclinical.useragreement.service.entity.UserEntity;
+
 
 /**
+ * 
  *
  * @author Andrew Post
  */
-public class UserAgreementServiceProperties extends UserAgreementProperties {
-    
-    @Override
-    public String getProxyCallbackServer() {
-        return getValue("eurekaclinical.useragreementservice.callbackserver");
+public class JpaUserDao extends org.eurekaclinical.standardapis.dao.AbstractJpaUserDao<UserEntity> {
+
+    /**
+     * Create an object with the give entity manager.
+     *
+     * @param inEMProvider The entity manager to be used for communication with
+     * the data store.
+     */
+    @Inject
+    public JpaUserDao(final Provider<EntityManager> inEMProvider) {
+        super(UserEntity.class, inEMProvider);
     }
 
 }

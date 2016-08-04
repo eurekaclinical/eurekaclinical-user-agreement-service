@@ -1,4 +1,4 @@
-package org.eurekaclinical.useragreementservice.entity;
+package org.eurekaclinical.useragreement.service.entity;
 
 /*-
  * #%L

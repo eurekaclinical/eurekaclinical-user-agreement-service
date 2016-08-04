@@ -1,4 +1,4 @@
-package org.eurekaclinical.useragreementservice.resource;
+package org.eurekaclinical.useragreement.service.resource;
 
 /*-
  * #%L
@@ -28,8 +28,8 @@ import org.eurekaclinical.standardapis.dao.UserDao;
 import org.eurekaclinical.standardapis.dao.RoleDao;
 import org.eurekaclinical.common.comm.User;
 import org.eurekaclinical.common.resource.AbstractUserResource;
-import org.eurekaclinical.useragreementservice.entity.RoleEntity;
-import org.eurekaclinical.useragreementservice.entity.UserEntity;
+import org.eurekaclinical.useragreement.service.entity.RoleEntity;
+import org.eurekaclinical.useragreement.service.entity.UserEntity;
 
 /**
  *
