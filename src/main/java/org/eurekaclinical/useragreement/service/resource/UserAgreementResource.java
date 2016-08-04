@@ -36,7 +36,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.eurekaclinical.standardapis.exception.HttpStatusException;
-import org.eurekaclinical.useragreementcommon.comm.UserAgreement;
+import org.eurekaclinical.useragreement.client.comm.UserAgreement;
 import org.eurekaclinical.useragreement.service.dao.UserAgreementDao;
 import org.eurekaclinical.useragreement.service.entity.UserAgreementEntity;
 

@@ -21,6 +21,7 @@ package org.eurekaclinical.useragreement.service.resource;
  */
 import com.google.inject.persist.Transactional;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Path;
 import org.eurekaclinical.standardapis.dao.RoleDao;
 import org.eurekaclinical.common.comm.Role;
@@ -42,7 +43,7 @@ public class RoleResource extends AbstractRoleResource<RoleEntity, Role> {
     }
 
     @Override
-    protected Role toRole(RoleEntity roleEntity) {
+    protected Role toComm(RoleEntity roleEntity, HttpServletRequest req) {
         Role role = new Role();
         role.setId(roleEntity.getId());
         role.setName(roleEntity.getName());

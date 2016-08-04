@@ -20,7 +20,7 @@ package org.eurekaclinical.useragreement.service.props;
  * #L%
  */
 
-import org.eurekaclinical.useragreementcommon.props.UserAgreementProperties;
+import org.eurekaclinical.useragreement.common.props.UserAgreementProperties;
 
 /**
  *

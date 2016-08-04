@@ -23,6 +23,7 @@ import com.google.inject.persist.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Path;
 import org.eurekaclinical.standardapis.dao.UserDao;
 import org.eurekaclinical.standardapis.dao.RoleDao;
@@ -47,7 +48,7 @@ public class UserResource extends AbstractUserResource<User, UserEntity, RoleEnt
     }
     
     @Override
-    protected User toUser(UserEntity userEntity) {
+    protected User toComm(UserEntity userEntity, HttpServletRequest req) {
         User user = new User();
         user.setId(userEntity.getId());
         user.setUsername(userEntity.getUsername());
@@ -60,7 +61,7 @@ public class UserResource extends AbstractUserResource<User, UserEntity, RoleEnt
     }
     
     @Override
-    protected UserEntity toUserEntity(User user) {
+    protected UserEntity toEntity(User user) {
         List<RoleEntity> roleEntities = this.roleDao.getAll();
         UserEntity userEntity = new UserEntity();
         userEntity.setId(user.getId());
