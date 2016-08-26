@@ -33,4 +33,9 @@ public class UserAgreementServiceProperties extends UserAgreementProperties {
         return getValue("eurekaclinical.useragreementservice.callbackserver");
     }
 
+    @Override
+    public String getUrl() {
+        return getValue("eurekaclinical.useragreementservice.url");
+    }
+    
 }
