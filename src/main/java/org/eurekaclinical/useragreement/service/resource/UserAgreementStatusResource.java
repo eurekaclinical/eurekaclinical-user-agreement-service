@@ -34,6 +34,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.eurekaclinical.common.util.UserSupport;
 import org.eurekaclinical.standardapis.exception.HttpStatusException;
+import org.eurekaclinical.useragreement.client.comm.Status;
 import org.eurekaclinical.useragreement.client.comm.UserAgreement;
 import org.eurekaclinical.useragreement.client.comm.UserAgreementStatus;
 import org.eurekaclinical.useragreement.service.dao.UserAgreementDao;
@@ -136,6 +137,9 @@ public class UserAgreementStatusResource {
     /**
      * Get the current user's identification number.
      *
+     * @param status optional status filter query parameter, which if specified,
+     * will cause only a user agreement status with the specified status value
+     * to be returned.
      * @param req the request object. Cannot be <code>null</code>.
      * @return The current user's user agreement record. Cannot be
      * <code>null</code>.
@@ -144,21 +148,21 @@ public class UserAgreementStatusResource {
      */
     @Path("/me")
     @GET
-    public UserAgreementStatus getMine(@Context HttpServletRequest req) {
+    public UserAgreementStatus getMine(@QueryParam("status") Status status, @Context HttpServletRequest req) {
         Principal principal = req.getUserPrincipal();
         String username = principal.getName();
         UserAgreementStatusEntity uae = this.userAgreementStatusDao.getByUsername(username);
-        if (uae == null) {
+        if (uae == null || (status != null && status != uae.getState())) {
             throw new HttpStatusException(Response.Status.NOT_FOUND);
         }
-        UserAgreementStatus status = new UserAgreementStatus();
-        status.setId(uae.getId());
-        status.setUsername(uae.getUsername());
-        status.setExpiry(uae.getExpiry());
-        status.setFullname(uae.getFullname());
-        status.setStatus(uae.getState());
-        status.setUserAgreement(uae.getUserAgreement().getId());
-        return status;
+        UserAgreementStatus uas = new UserAgreementStatus();
+        uas.setId(uae.getId());
+        uas.setUsername(uae.getUsername());
+        uas.setExpiry(uae.getExpiry());
+        uas.setFullname(uae.getFullname());
+        uas.setStatus(uae.getState());
+        uas.setUserAgreement(uae.getUserAgreement().getId());
+        return uas;
     }
     
     /**
