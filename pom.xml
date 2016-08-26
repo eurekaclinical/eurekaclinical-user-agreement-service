@@ -32,7 +32,7 @@
     </issueManagement>
     
     <properties>
-        <eurekaclinical-user-agreement-common-version>1.0-Alpha-8</eurekaclinical-user-agreement-common-version>
+        <eurekaclinical-user-agreement-common-version>1.0-Alpha-9</eurekaclinical-user-agreement-common-version>
     </properties>
 	
     <build>
