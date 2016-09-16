@@ -64,7 +64,7 @@
         <profile>
             <id>tomcat</id>
             <properties>
-                <cas-mock-version>1.0-Alpha-2</cas-mock-version>
+                <cas-mock-version>1.0</cas-mock-version>
                 <tomcat.httpsPort>8443</tomcat.httpsPort>
             </properties>
             <build>
