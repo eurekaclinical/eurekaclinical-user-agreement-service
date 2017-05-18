@@ -173,7 +173,7 @@ Perform the following steps:
 ```
 <Context>
 ...
-    <Resource name="jdbc/UserAgreementService" auth="Container"
+    <Resource name="jdbc/EurekaClinicalUserAgreementService" auth="Container"
             type="javax.sql.DataSource"
             driverClassName="JDBC_DRIVER_CLASS_NAME"
             factory="org.apache.tomcat.jdbc.pool.DataSourceFactory"
