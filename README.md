@@ -112,6 +112,39 @@ Returns the currently active UserAgreement.
 ##### POST `/api/protected/useragreements/`
 Creates a new user agreement. The UserAgreement object is passed in as the body of the request. Returns the URI of the created UserAgreement object. Requires the `admin` role. If there is an existing user agreement, the old one will be expired, and this one will take its place.
 
+### `/api/protected/useragreementstatuses`
+Manages user agreement statuses, i.e., signatures.
+
+#### Role-based authorization
+Call-dependent
+
+#### Requires successful authentication
+Yes
+
+#### UserAgreementStatus object
+Properties:
+* `id`: unique number identifying the user agreement status record (set by the server on object creation, and required thereafter).
+* `username`: the username string of the signing user.
+* `fullname`: the full name that the user put in the signature field.
+* `expiry`: a timestamp, in milliseconds since the epoch, indicating when the agreement expires and the user has to sign another one.
+* `status`: `ACTIVE` or `EXPIRED`. Normally, it has the value `ACTIVE`. Set to `EXPIRED` to expire a user agreement prior to the expiry timestamp.
+* `userAgreement`: the unique numerical id of the user agreement that was presented to the user.
+
+#### Calls
+All calls use standard names, return values and status codes as specified in the [Eureka! Clinical microservice specification](https://github.com/eurekaclinical/dev-wiki/wiki/Eureka%21-Clinical-microservice-specification)
+
+##### GET `/api/protected/useragreementstatuses`
+Returns an array of all UserAgreementStatus objects. Requires the `admin` role.
+
+##### GET `/api/protected/useragreementstatuses/{id}`
+Returns a specified UserAgreementStatus object by the value of its id property, which is unique. Will only return a UserAgreementStatus object if it was signed by the current user.
+
+##### GET `/api/protected/useragreementstatuses/me`
+Returns a user's currently active UserAgreementStatus.
+
+##### POST `/api/protected/useragreementstatuses/`
+Creates a new user agreement status for the current user. The UserAgreementStatus object is passed in as the body of the request. Returns the URI of the created UserAgreementStatus object.
+
 ## Building it
 The project uses the maven build tool. Typically, you build it by invoking `mvn clean install` at the command line. For simple file changes, not additions or deletions, you can usually use `mvn install`. See https://github.com/eurekaclinical/dev-wiki/wiki/Building-Eureka!-Clinical-projects for more details.
 
