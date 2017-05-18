@@ -140,7 +140,7 @@ Returns an array of all UserAgreementStatus objects. Requires the `admin` role.
 Returns a specified UserAgreementStatus object by the value of its id property, which is unique. Will only return a UserAgreementStatus object if it was signed by the current user.
 
 ##### GET `/api/protected/useragreementstatuses/me`
-Returns a user's currently active UserAgreementStatus.
+Returns the current user's active UserAgreementStatus, if there is one.
 
 ##### POST `/api/protected/useragreementstatuses/`
 Creates a new user agreement status for the current user. The UserAgreementStatus object is passed in as the body of the request. Returns the URI of the created UserAgreementStatus object.
