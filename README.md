@@ -110,10 +110,10 @@ Returns a specified UserAgreement object by the value of its id property, which 
 Returns the currently active UserAgreement.
 
 ##### POST `/api/protected/useragreements/`
-Creates a new user agreement. The UserAgreement object is passed in as the body of the request. Returns the URI of the created UserAgreement object. Requires the `admin` role. If there is an existing user agreement, the old one will be expired, and this one will take its place.
+Creates a new user agreement. The UserAgreement object is passed in as the body of the request. Returns the URI of the created UserAgreement object. Requires the `admin` role. If there is an existing user agreement, the old one will be expired, and this one will become effective.
 
 ### `/api/protected/useragreementstatuses`
-Manages user agreement statuses, i.e., signatures.
+Manages user agreement statuses, i.e., signatures. Each user has at most one user agreement status. If a user signs a user agreement and already has a user agreement status record, the old record will be replaced.
 
 #### Role-based authorization
 Call-dependent
@@ -139,8 +139,8 @@ Returns an array of all UserAgreementStatus objects. Requires the `admin` role.
 ##### GET `/api/protected/useragreementstatuses/{id}`
 Returns a specified UserAgreementStatus object by the value of its id property, which is unique. Will only return a UserAgreementStatus object if it was signed by the current user.
 
-##### GET `/api/protected/useragreementstatuses/me`
-Returns the current user's active UserAgreementStatus, if there is one.
+##### GET `/api/protected/useragreementstatuses/me[?status=ACTIVE|EXPIRED]`
+Returns the current user's active UserAgreementStatus, if there is one. If the `status` query parameter is used, it will only get a UserAgreementStatus for the user if one exists and it has the specified status value.
 
 ##### POST `/api/protected/useragreementstatuses/`
 Creates a new user agreement status for the current user. The UserAgreementStatus object is passed in as the body of the request. Returns the URI of the created UserAgreementStatus object.
