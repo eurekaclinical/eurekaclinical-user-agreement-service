@@ -49,6 +49,9 @@ Returns an array of all User objects. Requires the `admin` role.
 ##### GET `/api/protected/users/{id}`
 Returns a specified User object by the value of its id property, which is unique. Requires the `admin` role to return any user record. Otherwise, it will only return the user's own record.
 
+##### GET `/api/protected/users/byname/{name}`
+Returns a specified User object by the value of its id property, which is unique. Requires the `admin` role to return any user record. Otherwise, it will only return the user's own record.
+
 ##### GET `/api/protected/users/me`
 Returns the User object for the currently authenticated user.
 
@@ -80,6 +83,9 @@ Returns an array of all User objects.
 
 ##### GET `/api/protected/roles/{id}`
 Returns a specified Role object by the value of its id property, which is unique.
+
+##### GET `/api/protected/roles/byname/{name}`
+Returns a specified Role object by its name, which is unique.
 
 ### `/api/protected/useragreements`
 Manages user agreements. There is one active user agreement at a time, though the system maintains a history of older user agreements to link to what each user actually signed.
