@@ -45,7 +45,6 @@ import org.eurekaclinical.useragreement.service.entity.UserAgreementEntity;
  * @author Andrew Post
  */
 @Path("/protected/useragreements")
-@Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Transactional
 public class UserAgreementResource {
@@ -58,6 +57,7 @@ public class UserAgreementResource {
     }
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     public List<UserAgreement> getAll() {
         List<UserAgreement> results = new ArrayList<>();
         for (UserAgreementEntity uae : this.userAgreementDao.getAll()) {
@@ -67,6 +67,7 @@ public class UserAgreementResource {
     }
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/current")
     public UserAgreement getCurrent() {
         UserAgreementEntity uae = this.userAgreementDao.getCurrent();
@@ -77,6 +78,7 @@ public class UserAgreementResource {
     }
 
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
     public UserAgreement getAny(@PathParam("id") Long inId, @Context HttpServletRequest req) {
         UserAgreementEntity uae = this.userAgreementDao.retrieve(inId);

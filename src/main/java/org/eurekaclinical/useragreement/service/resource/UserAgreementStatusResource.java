@@ -50,7 +50,6 @@ import org.eurekaclinical.useragreement.service.entity.UserAgreementEntity;
  * @author Andrew Post
  */
 @Path("/protected/useragreementstatuses")
-@Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 @Transactional
 public class UserAgreementStatusResource {
@@ -87,6 +86,7 @@ public class UserAgreementStatusResource {
      * @return a list of {@link UserAgreement} objects.
      */
     @GET
+    @Produces(MediaType.APPLICATION_JSON)
     @RolesAllowed({"admin"})
     public List<UserAgreementStatus> getAll() {
         List<UserAgreementStatusEntity> uaes = this.userAgreementStatusDao.getAll();
@@ -115,8 +115,9 @@ public class UserAgreementStatusResource {
      * @throws HttpStatusException with a 404 status code if there is no user
      * agreement record with that identification number.
      */
-    @Path("/{id}")
     @GET
+    @Path("/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
     public UserAgreementStatus getById(@PathParam("id") Long inId, @Context HttpServletRequest req) {
         UserAgreementStatusEntity uae = this.userAgreementStatusDao.retrieve(inId);
         if (uae == null) {
@@ -146,8 +147,9 @@ public class UserAgreementStatusResource {
      * @throws HttpStatusException with a 404 status code if the current user
      * has no user agreement record.
      */
-    @Path("/me")
     @GET
+    @Path("/me")
+    @Produces(MediaType.APPLICATION_JSON)
     public UserAgreementStatus getMine(@QueryParam("status") Status status, @Context HttpServletRequest req) {
         Principal principal = req.getUserPrincipal();
         String username = principal.getName();
