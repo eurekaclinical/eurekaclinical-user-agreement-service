@@ -32,7 +32,7 @@
     </issueManagement>
     
     <properties>
-        <eurekaclinical-user-agreement-common-version>2.0-Alpha-2</eurekaclinical-user-agreement-common-version>
+        <eurekaclinical-user-agreement-client-version>2.0-Alpha-3</eurekaclinical-user-agreement-client-version>
     </properties>
 	
     <build>
@@ -52,8 +52,8 @@
     <dependencies>
         <dependency>
             <groupId>org.eurekaclinical</groupId>
-            <artifactId>eurekaclinical-user-agreement-common</artifactId>
-            <version>${eurekaclinical-user-agreement-common-version}</version>
+            <artifactId>eurekaclinical-user-agreement-client</artifactId>
+            <version>${eurekaclinical-user-agreement-client-version}</version>
         </dependency>
         <dependency>
             <groupId>com.sun.jersey.jersey-test-framework</groupId>

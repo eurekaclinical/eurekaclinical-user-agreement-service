@@ -20,13 +20,17 @@ package org.eurekaclinical.useragreement.service.props;
  * #L%
  */
 
-import org.eurekaclinical.useragreement.common.props.UserAgreementProperties;
+import org.eurekaclinical.standardapis.props.CasJerseyEurekaClinicalProperties;
 
 /**
  *
  * @author Andrew Post
  */
-public class UserAgreementServiceProperties extends UserAgreementProperties {
+public class UserAgreementServiceProperties extends CasJerseyEurekaClinicalProperties {
+    
+    public UserAgreementServiceProperties() {
+        super("/etc/ec-user-agreement");
+    }
     
     @Override
     public String getProxyCallbackServer() {
