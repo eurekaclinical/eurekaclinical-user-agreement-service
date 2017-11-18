@@ -32,7 +32,9 @@
     </issueManagement>
     
     <properties>
-        <eurekaclinical-user-agreement-client-version>2.0-Alpha-4</eurekaclinical-user-agreement-client-version>
+        <eurekaclinical-user-agreement-client-version>2.0-Alpha-5</eurekaclinical-user-agreement-client-version>
+        <eurekaclinical-common-version>2.0-Alpha-36</eurekaclinical-common-version>
+        <eurekaclinical-standard-apis-version>2.0-Alpha-17</eurekaclinical-standard-apis-version>
     </properties>
 	
     <build>
@@ -58,6 +60,16 @@
         <dependency>
             <groupId>com.sun.jersey.jersey-test-framework</groupId>
             <artifactId>jersey-test-framework-grizzly2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.eurekaclinical</groupId>
+            <artifactId>eurekaclinical-common</artifactId>
+            <version>${eurekaclinical-common-version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eurekaclinical</groupId>
+            <artifactId>eurekaclinical-standard-apis</artifactId>
+            <version>${eurekaclinical-standard-apis-version}</version>
         </dependency>
     </dependencies>
     <profiles>
@@ -190,7 +202,7 @@
                                 </webapp>
                             </webapps>
                             <addContextWarDependencies>true</addContextWarDependencies>
-                            <addWarDependenciesInClassloader>true</addWarDependenciesInClassloader>
+                            <addWarDependenciesInClassloader>false</addWarDependenciesInClassloader>
                         </configuration>
                     </plugin>
                     <plugin>
