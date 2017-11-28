@@ -32,9 +32,9 @@
     </issueManagement>
     
     <properties>
-        <eurekaclinical-user-agreement-client-version>2.0-Alpha-5</eurekaclinical-user-agreement-client-version>
-        <eurekaclinical-common-version>2.0-Alpha-36</eurekaclinical-common-version>
-        <eurekaclinical-standard-apis-version>2.0-Alpha-17</eurekaclinical-standard-apis-version>
+        <eurekaclinical-user-agreement-client-version>2.0-Alpha-6</eurekaclinical-user-agreement-client-version>
+        <eurekaclinical-common-version>2.0-Alpha-38</eurekaclinical-common-version>
+        <eurekaclinical-standard-apis-version>2.0-Alpha-18</eurekaclinical-standard-apis-version>
     </properties>
 	
     <build>
