@@ -4,7 +4,7 @@
 ## What does it do?
 It provides RESTful APIs for managing user agreements.
 
-## Version 2.1 development series
+## Version 3.0 development series
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-user-agreement-service/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-user-agreement-service)
 
 ## Version history
