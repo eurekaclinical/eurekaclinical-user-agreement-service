@@ -4,14 +4,15 @@
 ## What does it do?
 It provides RESTful APIs for managing user agreements.
 
-## Version 3.0 development series
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-user-agreement-service/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-user-agreement-service)
 
-## Version history
-### Version 2.0
+## Version 3.0
 Mainly updates dependencies.
 
-### Version 1.1
+## Version 2.0
+Mainly updates dependencies.
+
+## Version 1.1
 Provides REST APIs for users to sign a user agreement and check their most recent user agreement signature. It also provides APIs for admins to manage user agreements.
 
 ## Build requirements
