@@ -117,4 +117,39 @@
             <column name="ROLE_ID" valueComputed="(SELECT ID FROM ROLES WHERE NAME='admin')"/>
         </insert>
     </changeSet>
+    
+    
+        <changeSet id="6" author="dileep">
+
+        <createTable tableName="USERTEMPLATES">
+            <column name="ID" type="BIGINT">
+                <constraints nullable="false" primaryKey="true"
+                    primaryKeyName="UT_PK" />
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false" unique="true"
+                    uniqueConstraintName="UT_NAME_UNIQ" />
+            </column>
+            <column name="AUTOAUTHORIZE" type="BOOLEAN">
+                <constraints nullable="false" />
+            </column>
+            <column name="CRITERIA" type="VARCHAR(255)" />
+        </createTable>
+
+        <createSequence sequenceName="UT_SEQ" />
+
+        <createTable tableName="USERTEMPLATE_ROLE">
+            <column name="USERTEMPLATE_ID" type="BIGINT">
+                <constraints nullable="false"
+                    foreignKeyName="UT_ROLE_USERTEMPLATES_FK"
+                    referencedColumnNames="ID" referencedTableName="USERTEMPLATES" />
+            </column>
+            <column name="ROLE_ID" type="BIGINT">
+                <constraints nullable="false"
+                    foreignKeyName="UT_ROLE_ROLES_FK" referencedColumnNames="ID"
+                    referencedTableName="ROLES" />
+            </column>
+        </createTable>
+        
+    </changeSet>
 </databaseChangeLog>

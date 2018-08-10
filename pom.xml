@@ -32,7 +32,7 @@
     </issueManagement>
     
     <properties>
-        <eurekaclinical-user-agreement-client-version>2.1</eurekaclinical-user-agreement-client-version>
+        <eurekaclinical-user-agreement-client-version>2.2-SNAPSHOT</eurekaclinical-user-agreement-client-version>
         <eurekaclinical-common-version>3.0</eurekaclinical-common-version>
         <eurekaclinical-standard-apis-version>2.1</eurekaclinical-standard-apis-version>
         <cas-mock-version>2.1</cas-mock-version>
