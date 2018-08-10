@@ -73,10 +73,6 @@
             <artifactId>eurekaclinical-standard-apis</artifactId>
             <version>${eurekaclinical-standard-apis-version}</version>
         </dependency>
-	    <dependency>
-			<groupId>org.freemarker</groupId>
-			<artifactId>freemarker</artifactId>
-		</dependency>
     </dependencies>
     <profiles>
         <profile>

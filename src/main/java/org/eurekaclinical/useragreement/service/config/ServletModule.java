@@ -27,7 +27,7 @@ import org.eurekaclinical.useragreement.service.props.UserAgreementServiceProper
 
 public class ServletModule extends AbstractAuthorizingJerseyServletModuleWithPersist {
 
-    private static final String PACKAGE_NAMES = "org.eurekaclinical.registry.service.resource";
+    private static final String PACKAGE_NAMES = "org.eurekaclinical.useragreement.service.resource";
 
     public ServletModule(UserAgreementServiceProperties inProperties) {
         super(inProperties, PACKAGE_NAMES, false);
