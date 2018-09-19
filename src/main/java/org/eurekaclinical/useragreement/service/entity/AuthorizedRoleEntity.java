@@ -37,7 +37,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "roles")
-public class RoleEntity implements org.eurekaclinical.standardapis.entity.RoleEntity {
+public class AuthorizedRoleEntity implements org.eurekaclinical.standardapis.entity.RoleEntity {
 
     /**
      * The role's unique identifier.
@@ -61,7 +61,7 @@ public class RoleEntity implements org.eurekaclinical.standardapis.entity.RoleEn
     /**
      * Create an empty role.
      */
-    public RoleEntity() {
+    public AuthorizedRoleEntity() {
     }
 
     /**
@@ -143,7 +143,7 @@ public class RoleEntity implements org.eurekaclinical.standardapis.entity.RoleEn
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final RoleEntity other = (RoleEntity) obj;
+        final AuthorizedRoleEntity other = (AuthorizedRoleEntity) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }
