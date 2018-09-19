@@ -32,8 +32,8 @@ import org.eurekaclinical.useragreement.service.dao.JpaUserDao;
 import org.eurekaclinical.useragreement.service.dao.JpaUserTemplateDao;
 import org.eurekaclinical.useragreement.service.dao.UserAgreementDao;
 import org.eurekaclinical.useragreement.service.dao.UserAgreementStatusDao;
-import org.eurekaclinical.useragreement.service.entity.RoleEntity;
-import org.eurekaclinical.useragreement.service.entity.UserEntity;
+import org.eurekaclinical.useragreement.service.entity.AuthorizedRoleEntity;
+import org.eurekaclinical.useragreement.service.entity.AuthorizedUserEntity;
 import org.eurekaclinical.useragreement.service.entity.UserTemplateEntity;
 
 /**
@@ -45,9 +45,9 @@ public class AppModule extends AbstractModule {
     protected void configure() {
         bind(UserAgreementDao.class).to(JpaUserAgreementDao.class);
         bind(UserAgreementStatusDao.class).to(JpaUserAgreementStatusDao.class);
-        bind(new TypeLiteral<UserTemplateDao<UserTemplateEntity>>() {}).to(JpaUserTemplateDao.class);
-        bind(new TypeLiteral<UserDao<UserEntity>>() {}).to(JpaUserDao.class);
+        bind(new TypeLiteral<UserTemplateDao<AuthorizedRoleEntity,UserTemplateEntity>>() {}).to(JpaUserTemplateDao.class);
+        bind(new TypeLiteral<UserDao<AuthorizedUserEntity>>() {}).to(JpaUserDao.class);
         bind(new TypeLiteral<UserDao<? extends org.eurekaclinical.standardapis.entity.UserEntity<? extends org.eurekaclinical.standardapis.entity.RoleEntity>>>() {}).to(JpaUserDao.class);
-        bind(new TypeLiteral<RoleDao<RoleEntity>>() {}).to(JpaRoleDao.class);
+        bind(new TypeLiteral<RoleDao<AuthorizedRoleEntity>>() {}).to(JpaRoleDao.class);
     }
 }
