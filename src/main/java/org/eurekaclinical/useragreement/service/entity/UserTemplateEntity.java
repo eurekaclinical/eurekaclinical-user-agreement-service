@@ -42,7 +42,7 @@ import javax.persistence.Table;
  */
 @Table(name = "usertemplates")
 @Entity
-public class UserTemplateEntity implements org.eurekaclinical.standardapis.entity.UserTemplateEntity<RoleEntity> {
+public class UserTemplateEntity implements org.eurekaclinical.standardapis.entity.UserTemplateEntity<AuthorizedRoleEntity> {
 
     /**
      * The user's unique identifier.
@@ -73,7 +73,7 @@ public class UserTemplateEntity implements org.eurekaclinical.standardapis.entit
                 @JoinColumn(name = "usertemplate_id")},
             inverseJoinColumns = {
                 @JoinColumn(name = "role_id")})
-    private List<RoleEntity> roles = new ArrayList<>();
+    private List<AuthorizedRoleEntity> roles = new ArrayList<>();
 
 
 
@@ -129,12 +129,12 @@ public class UserTemplateEntity implements org.eurekaclinical.standardapis.entit
     }
 
     @Override
-    public List<RoleEntity> getRoles() {
+    public List<AuthorizedRoleEntity> getRoles() {
         return new ArrayList<>(this.roles);
     }
 
     @Override
-    public void setRoles(List<RoleEntity> inRoles) {
+    public void setRoles(List<AuthorizedRoleEntity> inRoles) {
         if (inRoles == null) {
             this.roles = new ArrayList<>();
         } else {
@@ -143,14 +143,14 @@ public class UserTemplateEntity implements org.eurekaclinical.standardapis.entit
     }
     
     @Override
-    public void addRole(RoleEntity role) {
+    public void addRole(AuthorizedRoleEntity role) {
         if (!this.roles.contains(role)) {
             this.roles.add(role);
         }
     }
     
     @Override
-    public void removeRole(RoleEntity role) {
+    public void removeRole(AuthorizedRoleEntity role) {
         this.roles.remove(role);
     }
 

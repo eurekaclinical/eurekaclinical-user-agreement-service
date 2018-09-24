@@ -1,8 +1,10 @@
-/*
+package org.eurekaclinical.useragreement.service.dao;
+
+/*-
  * #%L
- * Eureka Common
+ * Eureka! Clinical User Agreement Service
  * %%
- * Copyright (C) 2012 - 2013 Emory University
+ * Copyright (C) 2016 - 2018 Emory University
  * %%
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,25 +19,9 @@
  * limitations under the License.
  * #L%
  */
-package org.eurekaclinical.useragreementservice.test;
 
-/**
- *
- * @author hrathod
- */
-public class TestDataException extends Exception {
+import org.eurekaclinical.useragreement.service.entity.AuthorizedRoleEntity;
 
-    /**
-     * Used for serialization and de-serialization.
-     */
-    private static final long serialVersionUID = 2821409571465766682L;
+public interface UserAgreementServiceRoleDao extends org.eurekaclinical.standardapis.dao.RoleDao<AuthorizedRoleEntity> {
 
-    /**
-     * Create an exception with the given Throwable as the root cause.
-     *
-     * @param throwable The root cause of the exception.
-     */
-    public TestDataException(Throwable throwable) {
-        super(throwable);
-    }
 }
