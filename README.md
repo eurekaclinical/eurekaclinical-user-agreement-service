@@ -6,7 +6,7 @@ It provides RESTful APIs for managing user agreements.
 
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-user-agreement-service/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-user-agreement-service)
 
-## Version 3.1
+## Version 4.0
 Add user template support. If turned on, when a user accesses any of this service's APIs, a user record with default privileges is created.
 
 ## Version 3.0
