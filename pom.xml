@@ -33,8 +33,8 @@
     
     <properties>
         <eurekaclinical-user-agreement-client-version>2.2-Beta-1</eurekaclinical-user-agreement-client-version>
-        <eurekaclinical-common-version>4.0-Beta-2-SNAPSHOT</eurekaclinical-common-version>
-        <eurekaclinical-standard-apis-version>3.0-Beta-2-SNAPSHOT</eurekaclinical-standard-apis-version>
+        <eurekaclinical-common-version>4.1-Beta-1</eurekaclinical-common-version>
+        <eurekaclinical-standard-apis-version>3.0</eurekaclinical-standard-apis-version>
         <cas-mock-version>2.1</cas-mock-version>
         <tomcat.httpsPort>8443</tomcat.httpsPort>
     </properties>
