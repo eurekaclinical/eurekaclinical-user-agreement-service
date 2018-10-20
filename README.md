@@ -6,6 +6,9 @@ It provides RESTful APIs for managing user agreements.
 
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-user-agreement-service/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-user-agreement-service)
 
+## Version 3.0.1
+Fix 500 errors when the user has no record in the USERS table.
+
 ## Version 3.0
 Mainly updates dependencies.
 
