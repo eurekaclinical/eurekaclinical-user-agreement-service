@@ -9,6 +9,9 @@ Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-cent
 ## Version 4.0
 Add user template support. If turned on, when a user accesses any of this service's APIs, a user record with default privileges is created.
 
+## Version 3.0.1
+Fix 500 errors when the user has no record in the USERS table.
+
 ## Version 3.0
 Mainly updates dependencies.
 
