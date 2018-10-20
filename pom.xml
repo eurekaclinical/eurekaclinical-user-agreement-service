@@ -32,9 +32,9 @@
     </issueManagement>
     
     <properties>
-        <eurekaclinical-user-agreement-client-version>2.1</eurekaclinical-user-agreement-client-version>
-        <eurekaclinical-common-version>3.0</eurekaclinical-common-version>
-        <eurekaclinical-standard-apis-version>2.1</eurekaclinical-standard-apis-version>
+        <eurekaclinical-user-agreement-client-version>2.2</eurekaclinical-user-agreement-client-version>
+        <eurekaclinical-common-version>4.0</eurekaclinical-common-version>
+        <eurekaclinical-standard-apis-version>3.1-SNAPSHOT</eurekaclinical-standard-apis-version>
         <cas-mock-version>2.1</cas-mock-version>
         <tomcat.httpsPort>8443</tomcat.httpsPort>
     </properties>
