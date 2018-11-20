@@ -26,6 +26,7 @@ import com.google.inject.Injector;
 import com.google.inject.Module;
 import com.google.inject.persist.jpa.JpaPersistModule;
 import com.google.inject.servlet.GuiceServletContextListener;
+import org.eurekaclinical.common.config.ServiceServletModuleWithAutoAuthorization;
 import org.eurekaclinical.useragreement.service.props.UserAgreementServiceProperties;
 
 /**
@@ -36,7 +37,7 @@ import org.eurekaclinical.useragreement.service.props.UserAgreementServiceProper
  *
  */
 public class UserAgreementContextListener extends GuiceServletContextListener {
-
+    private static final String PACKAGE_NAMES = "org.eurekaclinical.useragreement.service.resource";
     private static final String JPA_UNIT = "user-agreement-service-jpa-unit";
     private final UserAgreementServiceProperties properties = new UserAgreementServiceProperties();
     private InjectorSupport injectorSupport;
@@ -51,7 +52,7 @@ public class UserAgreementContextListener extends GuiceServletContextListener {
             this.injectorSupport = new InjectorSupport(
                     new Module[]{
                         new AppModule(),
-                        new UserAgreementServletModule(this.properties),
+                        new ServiceServletModuleWithAutoAuthorization(this.properties, PACKAGE_NAMES),
                         new JpaPersistModule(JPA_UNIT)
                     },
                     this.properties);
