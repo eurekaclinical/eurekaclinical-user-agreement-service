@@ -26,7 +26,6 @@ import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Path;
 import org.eurekaclinical.standardapis.dao.UserDao;
-import org.eurekaclinical.standardapis.dao.RoleDao;
 import org.eurekaclinical.common.comm.User;
 import org.eurekaclinical.common.resource.AbstractUserResource;
 import org.eurekaclinical.useragreement.service.dao.UserAgreementServiceRoleDao;
@@ -43,7 +42,7 @@ public class UserResource extends AbstractUserResource<User, AuthorizedUserEntit
     private final UserAgreementServiceRoleDao roleDao;
 
     @Inject
-    public UserResource(UserDao<AuthorizedUserEntity> inUserDao, UserAgreementServiceRoleDao inRoleDao) {
+    public UserResource(UserDao<AuthorizedRoleEntity, AuthorizedUserEntity> inUserDao, UserAgreementServiceRoleDao inRoleDao) {
         super(inUserDao);
         this.roleDao = inRoleDao;
     }

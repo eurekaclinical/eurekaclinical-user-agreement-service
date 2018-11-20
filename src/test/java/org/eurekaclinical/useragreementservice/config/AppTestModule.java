@@ -20,15 +20,16 @@ package org.eurekaclinical.useragreementservice.config;
  * #L%
  */
 
-import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
 import com.google.inject.persist.jpa.JpaPersistModule;
+import org.eurekaclinical.common.config.AbstractAppModule;
 import org.eurekaclinical.standardapis.dao.RoleDao;
 import org.eurekaclinical.standardapis.dao.UserDao;
 import org.eurekaclinical.useragreement.service.dao.JpaRoleDao;
 import org.eurekaclinical.useragreement.service.dao.JpaUserAgreementDao;
 import org.eurekaclinical.useragreement.service.dao.JpaUserAgreementStatusDao;
 import org.eurekaclinical.useragreement.service.dao.JpaUserDao;
+import org.eurekaclinical.useragreement.service.dao.JpaUserTemplateDao;
 import org.eurekaclinical.useragreement.service.dao.UserAgreementDao;
 import org.eurekaclinical.useragreement.service.dao.UserAgreementStatusDao;
 import org.eurekaclinical.useragreement.service.entity.AuthorizedRoleEntity;
@@ -38,15 +39,19 @@ import org.eurekaclinical.useragreement.service.entity.AuthorizedUserEntity;
  *
  * @author Andrew Post
  */
-public class AppTestModule extends AbstractModule {
+public class AppTestModule extends AbstractAppModule {
 
+    public AppTestModule() {
+        super(JpaUserDao.class, JpaUserTemplateDao.class);
+    }
+    
     @Override
     protected void configure() {
         install(new JpaPersistModule("user-agreement-service-jpa-unit"));
+        super.configure();
         bind(UserAgreementDao.class).to(JpaUserAgreementDao.class);
         bind(UserAgreementStatusDao.class).to(JpaUserAgreementStatusDao.class);
-        bind(new TypeLiteral<UserDao<AuthorizedUserEntity>>() {}).to(JpaUserDao.class);
-        bind(new TypeLiteral<UserDao<? extends org.eurekaclinical.standardapis.entity.UserEntity<? extends org.eurekaclinical.standardapis.entity.RoleEntity>>>() {}).to(JpaUserDao.class);
+        bind(new TypeLiteral<UserDao<AuthorizedRoleEntity, AuthorizedUserEntity>>() {}).to(JpaUserDao.class);
         bind(new TypeLiteral<RoleDao<AuthorizedRoleEntity>>() {}).to(JpaRoleDao.class);
     }
 }

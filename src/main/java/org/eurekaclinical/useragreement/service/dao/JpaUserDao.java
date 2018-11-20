@@ -23,6 +23,7 @@ package org.eurekaclinical.useragreement.service.dao;
 import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.persistence.EntityManager;
+import org.eurekaclinical.useragreement.service.entity.AuthorizedRoleEntity;
 import org.eurekaclinical.useragreement.service.entity.AuthorizedUserEntity;
 
 
@@ -31,7 +32,7 @@ import org.eurekaclinical.useragreement.service.entity.AuthorizedUserEntity;
  *
  * @author Andrew Post
  */
-public class JpaUserDao extends org.eurekaclinical.standardapis.dao.AbstractJpaUserDao<AuthorizedUserEntity> {
+public class JpaUserDao extends org.eurekaclinical.standardapis.dao.AbstractJpaUserDao<AuthorizedRoleEntity, AuthorizedUserEntity> {
 
     /**
      * Create an object with the give entity manager.
@@ -42,6 +43,12 @@ public class JpaUserDao extends org.eurekaclinical.standardapis.dao.AbstractJpaU
     @Inject
     public JpaUserDao(final Provider<EntityManager> inEMProvider) {
         super(AuthorizedUserEntity.class, inEMProvider);
+    }
+
+    @Override
+    public AuthorizedUserEntity newUser() {
+        AuthorizedUserEntity user = new AuthorizedUserEntity();
+        return user;
     }
 
 }

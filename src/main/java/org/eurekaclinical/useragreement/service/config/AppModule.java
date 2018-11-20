@@ -22,6 +22,7 @@ package org.eurekaclinical.useragreement.service.config;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
+import org.eurekaclinical.common.config.AbstractAppModule;
 import org.eurekaclinical.standardapis.dao.RoleDao;
 import org.eurekaclinical.standardapis.dao.UserDao;
 import org.eurekaclinical.standardapis.dao.UserTemplateDao;
@@ -31,6 +32,7 @@ import org.eurekaclinical.useragreement.service.dao.JpaUserAgreementStatusDao;
 import org.eurekaclinical.useragreement.service.dao.JpaUserDao;
 import org.eurekaclinical.useragreement.service.dao.JpaUserTemplateDao;
 import org.eurekaclinical.useragreement.service.dao.UserAgreementDao;
+import org.eurekaclinical.useragreement.service.dao.UserAgreementServiceRoleDao;
 import org.eurekaclinical.useragreement.service.dao.UserAgreementStatusDao;
 import org.eurekaclinical.useragreement.service.entity.AuthorizedRoleEntity;
 import org.eurekaclinical.useragreement.service.entity.AuthorizedUserEntity;
@@ -39,15 +41,20 @@ import org.eurekaclinical.useragreement.service.entity.UserTemplateEntity;
 /**
  * @author arpost
  */
-public class AppModule extends AbstractModule {
+public class AppModule extends AbstractAppModule {
 
+    public AppModule() {
+        super(JpaUserDao.class, JpaUserTemplateDao.class);
+    }
+    
     @Override
     protected void configure() {
+        super.configure();
         bind(UserAgreementDao.class).to(JpaUserAgreementDao.class);
         bind(UserAgreementStatusDao.class).to(JpaUserAgreementStatusDao.class);
+        bind(UserAgreementServiceRoleDao.class).to(JpaRoleDao.class);
         bind(new TypeLiteral<UserTemplateDao<AuthorizedRoleEntity,UserTemplateEntity>>() {}).to(JpaUserTemplateDao.class);
-        bind(new TypeLiteral<UserDao<AuthorizedUserEntity>>() {}).to(JpaUserDao.class);
-        bind(new TypeLiteral<UserDao<? extends org.eurekaclinical.standardapis.entity.UserEntity<? extends org.eurekaclinical.standardapis.entity.RoleEntity>>>() {}).to(JpaUserDao.class);
+        bind(new TypeLiteral<UserDao<AuthorizedRoleEntity, AuthorizedUserEntity>>() {}).to(JpaUserDao.class);
         bind(new TypeLiteral<RoleDao<AuthorizedRoleEntity>>() {}).to(JpaRoleDao.class);
     }
 }

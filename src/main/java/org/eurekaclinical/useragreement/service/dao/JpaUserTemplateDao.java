@@ -63,12 +63,4 @@ public class JpaUserTemplateDao extends AbstractJpaUserTemplateDao<AuthorizedRol
         }
     }
 
-    @Override
-    public UserEntity newUserEntityInstance(String username, List<AuthorizedRoleEntity> roles) {
-         AuthorizedUserEntity user = new AuthorizedUserEntity();
-            user.setUsername(username);
-            user.setRoles(roles);
-            return user;
-    }
-
 }
