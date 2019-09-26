@@ -45,7 +45,6 @@ public class AppModule extends AbstractModule {
     protected void configure() {
         bind(UserAgreementDao.class).to(JpaUserAgreementDao.class);
         bind(UserAgreementStatusDao.class).to(JpaUserAgreementStatusDao.class);
-        bind(new TypeLiteral<UserTemplateDao<AuthorizedRoleEntity,UserTemplateEntity>>() {}).to(JpaUserTemplateDao.class);
         bind(new TypeLiteral<UserDao<AuthorizedUserEntity>>() {}).to(JpaUserDao.class);
         bind(new TypeLiteral<UserDao<? extends org.eurekaclinical.standardapis.entity.UserEntity<? extends org.eurekaclinical.standardapis.entity.RoleEntity>>>() {}).to(JpaUserDao.class);
         bind(new TypeLiteral<RoleDao<AuthorizedRoleEntity>>() {}).to(JpaRoleDao.class);
