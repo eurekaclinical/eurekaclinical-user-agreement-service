@@ -22,16 +22,19 @@ package org.eurekaclinical.useragreement.service.config;
 
 import com.google.inject.AbstractModule;
 import com.google.inject.TypeLiteral;
+ 
 import org.eurekaclinical.standardapis.dao.RoleDao;
 import org.eurekaclinical.standardapis.dao.UserDao;
+import org.eurekaclinical.standardapis.dao.UserTemplateDao;
 import org.eurekaclinical.useragreement.service.dao.JpaRoleDao;
 import org.eurekaclinical.useragreement.service.dao.JpaUserAgreementDao;
 import org.eurekaclinical.useragreement.service.dao.JpaUserAgreementStatusDao;
 import org.eurekaclinical.useragreement.service.dao.JpaUserDao;
 import org.eurekaclinical.useragreement.service.dao.UserAgreementDao;
+import org.eurekaclinical.useragreement.service.dao.UserAgreementServiceRoleDao;
 import org.eurekaclinical.useragreement.service.dao.UserAgreementStatusDao;
-import org.eurekaclinical.useragreement.service.entity.RoleEntity;
-import org.eurekaclinical.useragreement.service.entity.UserEntity;
+import org.eurekaclinical.useragreement.service.entity.AuthorizedRoleEntity;
+import org.eurekaclinical.useragreement.service.entity.AuthorizedUserEntity;
 
 /**
  * @author arpost
@@ -40,10 +43,11 @@ public class AppModule extends AbstractModule {
 
     @Override
     protected void configure() {
+    	 bind(UserAgreementServiceRoleDao.class).to(JpaRoleDao.class);
         bind(UserAgreementDao.class).to(JpaUserAgreementDao.class);
         bind(UserAgreementStatusDao.class).to(JpaUserAgreementStatusDao.class);
-        bind(new TypeLiteral<UserDao<UserEntity>>() {}).to(JpaUserDao.class);
+        bind(new TypeLiteral<UserDao<AuthorizedUserEntity>>() {}).to(JpaUserDao.class);
         bind(new TypeLiteral<UserDao<? extends org.eurekaclinical.standardapis.entity.UserEntity<? extends org.eurekaclinical.standardapis.entity.RoleEntity>>>() {}).to(JpaUserDao.class);
-        bind(new TypeLiteral<RoleDao<RoleEntity>>() {}).to(JpaRoleDao.class);
+        bind(new TypeLiteral<RoleDao<AuthorizedRoleEntity>>() {}).to(JpaRoleDao.class);
     }
 }

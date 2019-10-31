@@ -21,10 +21,11 @@
 
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="user-agreement-service-jpa-unit" transaction-type="RESOURCE_LOCAL">
-    <class>org.eurekaclinical.useragreementservice.entity.UserAgreementEntity</class>
-    <class>org.eurekaclinical.useragreementservice.entity.UserAgreementStatusEntity</class>
-    <class>org.eurekaclinical.useragreementservice.entity.RoleEntity</class>
-    <class>org.eurekaclinical.useragreementservice.entity.UserEntity</class>
+    <class>org.eurekaclinical.useragreement.service.entity.UserAgreementEntity</class>
+    <class>org.eurekaclinical.useragreement.service.entity.UserAgreementStatusEntity</class>
+    <class>org.eurekaclinical.useragreement.service.entity.AuthorizedRoleEntity</class>
+    <class>org.eurekaclinical.useragreement.service.entity.AuthorizedUserEntity</class>
+    <class>org.eurekaclinical.useragreement.service.entity.UserTemplateEntity</class>
     <properties>
       <!-- Disable the second-level cache -->
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>

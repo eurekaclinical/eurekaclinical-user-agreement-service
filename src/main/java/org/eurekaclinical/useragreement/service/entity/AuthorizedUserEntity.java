@@ -43,7 +43,7 @@ import javax.persistence.ManyToMany;
  */
 @Entity
 @Table(name = "users")
-public class UserEntity implements org.eurekaclinical.standardapis.entity.UserEntity<RoleEntity> {
+public class AuthorizedUserEntity implements org.eurekaclinical.standardapis.entity.UserEntity<AuthorizedRoleEntity> {
 
     /**
      * The user's unique identifier.
@@ -70,12 +70,12 @@ public class UserEntity implements org.eurekaclinical.standardapis.entity.UserEn
                 @JoinColumn(name = "user_id")},
             inverseJoinColumns = {
                 @JoinColumn(name = "role_id")})
-    private List<RoleEntity> roles = new ArrayList<>();
+    private List<AuthorizedRoleEntity> roles = new ArrayList<>();
 
     /**
      * Create an empty User object.
      */
-    public UserEntity() {
+    public AuthorizedUserEntity() {
         this.roles = new ArrayList<>();
     }
 
@@ -125,7 +125,7 @@ public class UserEntity implements org.eurekaclinical.standardapis.entity.UserEn
      * @return A list of roles assigned to the user.
      */
     @Override
-    public List<RoleEntity> getRoles() {
+    public List<AuthorizedRoleEntity> getRoles() {
         return new ArrayList<>(this.roles);
     }
 
@@ -135,7 +135,7 @@ public class UserEntity implements org.eurekaclinical.standardapis.entity.UserEn
      * @param inRoles A list of roles to be assigned to the user.
      */
     @Override
-    public void setRoles(final List<RoleEntity> inRoles) {
+    public void setRoles(final List<AuthorizedRoleEntity> inRoles) {
         if (inRoles == null) {
             this.roles = new ArrayList<>();
         } else {
@@ -143,11 +143,11 @@ public class UserEntity implements org.eurekaclinical.standardapis.entity.UserEn
         }
     }
     
-    public void addRole(RoleEntity inRole) {
+    public void addRole(AuthorizedRoleEntity inRole) {
         this.roles.add(inRole);
     }
     
-    public void removeRole(RoleEntity inRole) {
+    public void removeRole(AuthorizedRoleEntity inRole) {
         this.roles.remove(inRole);
     }
 
@@ -169,7 +169,7 @@ public class UserEntity implements org.eurekaclinical.standardapis.entity.UserEn
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final UserEntity other = (UserEntity) obj;
+        final AuthorizedUserEntity other = (AuthorizedUserEntity) obj;
         if (!Objects.equals(this.id, other.id)) {
             return false;
         }

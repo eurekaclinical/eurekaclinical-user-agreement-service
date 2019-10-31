@@ -23,10 +23,10 @@ import com.google.inject.persist.Transactional;
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Path;
-import org.eurekaclinical.standardapis.dao.RoleDao;
 import org.eurekaclinical.common.comm.Role;
 import org.eurekaclinical.common.resource.AbstractRoleResource;
-import org.eurekaclinical.useragreement.service.entity.RoleEntity;
+import org.eurekaclinical.useragreement.service.dao.UserAgreementServiceRoleDao;
+import org.eurekaclinical.useragreement.service.entity.AuthorizedRoleEntity;
 
 
 /**
@@ -35,15 +35,15 @@ import org.eurekaclinical.useragreement.service.entity.RoleEntity;
  */
 @Path("/protected/roles")
 @Transactional
-public class RoleResource extends AbstractRoleResource<RoleEntity, Role> {
+public class RoleResource extends AbstractRoleResource<AuthorizedRoleEntity, Role> {
 
     @Inject
-    public RoleResource(RoleDao<RoleEntity> inRoleDao) {
+    public RoleResource(UserAgreementServiceRoleDao inRoleDao) {
         super(inRoleDao);
     }
 
     @Override
-    protected Role toComm(RoleEntity roleEntity, HttpServletRequest req) {
+    protected Role toComm(AuthorizedRoleEntity roleEntity, HttpServletRequest req) {
         Role role = new Role();
         role.setId(roleEntity.getId());
         role.setName(roleEntity.getName());
