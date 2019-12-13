@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>eurekaclinical-user-agreement-service</artifactId>
     <packaging>war</packaging>
-    <version>3.1-Beta-5-SNAPSHOT</version>
+    <version>3.2-Alpha-1-SNAPSHOT</version>
     <name>Eureka! Clinical User Agreement Service</name>
     <description>Provides a REST API for checking whether a logged-in user has
         agreed to a user agreement.
@@ -32,9 +32,9 @@
     </issueManagement>
     
     <properties>
-        <eurekaclinical-user-agreement-client-version>2.3-Beta-4-SNAPSHOT</eurekaclinical-user-agreement-client-version>
-        <eurekaclinical-common-version>5.0-Alpha-7-SNAPSHOT</eurekaclinical-common-version>
-        <eurekaclinical-standard-apis-version>4.0-Alpha-6-SNAPSHOT</eurekaclinical-standard-apis-version>
+        <eurekaclinical-user-agreement-client-version>2.4-Alpha-1-SNAPSHOT</eurekaclinical-user-agreement-client-version>
+        <eurekaclinical-common-version>5.1-Alpha-1-SNAPSHOT</eurekaclinical-common-version>
+        <eurekaclinical-standard-apis-version>4.1-Alpha-1-SNAPSHOT</eurekaclinical-standard-apis-version>
         <cas-mock-version>2.4-SNAPSHOT</cas-mock-version>
         <tomcat.httpsPort>8443</tomcat.httpsPort>
     </properties>
@@ -206,4 +206,3 @@
         </profile>
     </profiles>
 </project>
-
