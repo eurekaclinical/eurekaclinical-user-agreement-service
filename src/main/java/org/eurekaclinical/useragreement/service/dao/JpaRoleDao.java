@@ -24,7 +24,7 @@ import javax.inject.Inject;
 import javax.inject.Provider;
 import javax.persistence.EntityManager;
 import org.eurekaclinical.standardapis.dao.AbstractJpaRoleDao;
-import org.eurekaclinical.useragreement.service.entity.RoleEntity;
+import org.eurekaclinical.useragreement.service.entity.AuthorizedRoleEntity;
 
 
 /**
@@ -32,7 +32,7 @@ import org.eurekaclinical.useragreement.service.entity.RoleEntity;
  *
  * @author Andrew Post
  */
-public class JpaRoleDao extends AbstractJpaRoleDao<RoleEntity> {
+public class JpaRoleDao extends AbstractJpaRoleDao<AuthorizedRoleEntity> implements UserAgreementServiceRoleDao{
 
     /**
      * Create an object with the give entity manager.
@@ -42,7 +42,7 @@ public class JpaRoleDao extends AbstractJpaRoleDao<RoleEntity> {
      */
     @Inject
     public JpaRoleDao(final Provider<EntityManager> inEMProvider) {
-        super(RoleEntity.class, inEMProvider);
+        super(AuthorizedRoleEntity.class, inEMProvider);
     }
 
 }

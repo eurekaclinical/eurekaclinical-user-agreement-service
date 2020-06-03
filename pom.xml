@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>eurekaclinical-user-agreement-service</artifactId>
     <packaging>war</packaging>
-    <version>2.1-SNAPSHOT</version>
+    <version>3.2-Alpha-1-SNAPSHOT</version>
     <name>Eureka! Clinical User Agreement Service</name>
     <description>Provides a REST API for checking whether a logged-in user has
         agreed to a user agreement.
@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.eurekaclinical</groupId>
         <artifactId>eurekaclinical-parent-standard-deps</artifactId>
-        <version>2</version>
+        <version>4-Alpha-4-SNAPSHOT</version>
     </parent>
 
     <url>https://github.com/eurekaclinical/eurekaclinical-user-agreement-service.git</url>
@@ -32,9 +32,11 @@
     </issueManagement>
     
     <properties>
-        <eurekaclinical-user-agreement-client-version>2.0</eurekaclinical-user-agreement-client-version>
-        <eurekaclinical-common-version>2.0</eurekaclinical-common-version>
-        <eurekaclinical-standard-apis-version>2.0</eurekaclinical-standard-apis-version>
+        <eurekaclinical-user-agreement-client-version>2.4-Alpha-1-SNAPSHOT</eurekaclinical-user-agreement-client-version>
+        <eurekaclinical-common-version>5.1-Alpha-1-SNAPSHOT</eurekaclinical-common-version>
+        <eurekaclinical-standard-apis-version>4.1-Alpha-1-SNAPSHOT</eurekaclinical-standard-apis-version>
+        <cas-mock-version>2.4-SNAPSHOT</cas-mock-version>
+        <tomcat.httpsPort>8443</tomcat.httpsPort>
     </properties>
 	
     <build>
@@ -75,10 +77,6 @@
     <profiles>
         <profile>
             <id>tomcat</id>
-            <properties>
-                <cas-mock-version>2.0</cas-mock-version>
-                <tomcat.httpsPort>8443</tomcat.httpsPort>
-            </properties>
             <build>
                 <plugins>
                     <plugin>
@@ -162,47 +160,19 @@
                         </executions>
                     </plugin>
                     <plugin>
-                        <groupId>org.apache.tomcat.maven</groupId>
-                        <artifactId>tomcat7-maven-plugin</artifactId>
-                        <dependencies>
-                            <dependency>
-                                <groupId>org.jasig.cas.client</groupId>
-                                <artifactId>cas-client-core</artifactId>
-                                <version>${cas-client-version}</version>
-                                <exclusions>
-                                    <exclusion>
-                                        <groupId>javax.servlet</groupId>
-                                        <artifactId>servlet-api</artifactId>
-                                    </exclusion>
-                                </exclusions>
-                            </dependency>
-                        </dependencies>
+                        <groupId>org.codehaus.cargo</groupId>
+                        <artifactId>cargo-maven2-plugin</artifactId>
                         <configuration>
-                            <warSourceDirectory>${project.build.directory}/${project.build.finalName}</warSourceDirectory>
-                            <port>${tomcat.port}</port>
-                            <httpsPort>${tomcat.httpsPort}</httpsPort>
-                            <keystorePass>changeit</keystorePass>
-                            <keystoreFile>conf/localhost.keystore</keystoreFile>
-                            <keystoreType>JKS</keystoreType>
-                            <additionalConfigFilesDir>${project.build.directory}/tomcat-config</additionalConfigFilesDir>
-                            <systemProperties>
-                                <org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH>true</org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH>
-                                <javax.net.ssl.trustStore>${project.build.directory}/tomcat/conf/localhost.truststore</javax.net.ssl.trustStore>
-                                <javax.net.ssl.trustStorePassword>changeit</javax.net.ssl.trustStorePassword>
-                                <eureka.config.dir>${project.build.directory}/eureka-config/eureka</eureka.config.dir>
-                                <java.util.logging.config.file>${project.build.directory}/eureka-config/logging.properties</java.util.logging.config.file>
-                            </systemProperties>
-                            <webapps>
-                                <webapp>
+                            <deployables>
+                                <deployable>
+                                    <location>${project.build.directory}/${project.build.finalName}.${project.packaging}</location>
+                                </deployable>
+                                <deployable>
                                     <groupId>org.eurekaclinical</groupId>
                                     <artifactId>cas-mock</artifactId>
-                                    <version>${cas-mock-version}</version>
                                     <type>war</type>
-                                    <asWebapp>true</asWebapp>
-                                </webapp>
-                            </webapps>
-                            <addContextWarDependencies>true</addContextWarDependencies>
-                            <addWarDependenciesInClassloader>false</addWarDependenciesInClassloader>
+                                </deployable>
+                            </deployables>
                         </configuration>
                     </plugin>
                     <plugin>
@@ -236,4 +206,3 @@
         </profile>
     </profiles>
 </project>
-

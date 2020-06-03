@@ -1,14 +1,24 @@
 # Eureka! Clinical User Agreement Service
-[Atlanta Clinical and Translational Science Institute (ACTSI)](http://www.actsi.org), [Emory University](http://www.emory.edu), Atlanta, GA
+[Georgia Clinical and Translational Science Alliance (Georgia CTSA)](http://www.georgiactsa.org), [Emory University](http://www.emory.edu), Atlanta, GA
 
 ## What does it do?
 It provides RESTful APIs for managing user agreements.
 
-## Version 2.0 development series
 Latest release: [![Latest release](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-user-agreement-service/badge.svg)](https://maven-badges.herokuapp.com/maven-central/org.eurekaclinical/eurekaclinical-user-agreement-service)
 
-## Version history
-### Version 1.1
+## Version 4.0
+Add user template support. If turned on, when a user accesses any of this service's APIs, a user record with default privileges is created.
+
+## Version 3.0.1
+Fix 500 errors when the user has no record in the USERS table.
+
+## Version 3.0
+Mainly updates dependencies.
+
+## Version 2.0
+Mainly updates dependencies.
+
+## Version 1.1
 Provides REST APIs for users to sign a user agreement and check their most recent user agreement signature. It also provides APIs for admins to manage user agreements.
 
 ## Build requirements
@@ -155,7 +165,7 @@ Creates a new user agreement status for the current user. The UserAgreementStatu
 The project uses the maven build tool. Typically, you build it by invoking `mvn clean install` at the command line. For simple file changes, not additions or deletions, you can usually use `mvn install`. See https://github.com/eurekaclinical/dev-wiki/wiki/Building-Eureka!-Clinical-projects for more details.
 
 ## Performing system tests
-You can run this project in an embedded tomcat by executing `mvn tomcat7:run -Ptomcat` after you have built it. It will be accessible in your web browser at https://localhost:8443/eurekaclinical-user-agreement-service/. Your username will be `superuser`.
+You can run this project in an embedded tomcat by executing `mvn process-resources cargo:run -Ptomcat` after you have built it. It will be accessible in your web browser at https://localhost:8443/eurekaclinical-user-agreement-service/. Your username will be `superuser`.
 
 ## Installation
 ### Database schema creation
