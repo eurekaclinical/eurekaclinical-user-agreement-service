@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.eurekaclinical</groupId>
         <artifactId>eurekaclinical-parent-standard-deps</artifactId>
-        <version>4-Alpha-3</version>
+        <version>4-Alpha-4-SNAPSHOT</version>
     </parent>
 
     <url>https://github.com/eurekaclinical/eurekaclinical-user-agreement-service.git</url>
@@ -32,9 +32,9 @@
     </issueManagement>
     
     <properties>
-        <eurekaclinical-user-agreement-client-version>2.4-Alpha-1</eurekaclinical-user-agreement-client-version>
-        <eurekaclinical-common-version>5.0</eurekaclinical-common-version>
-        <eurekaclinical-standard-apis-version>4.0</eurekaclinical-standard-apis-version>
+        <eurekaclinical-user-agreement-client-version>2.4-Alpha-2-SNAPSHOT</eurekaclinical-user-agreement-client-version>
+        <eurekaclinical-common-version>5.1-Alpha-1-SNAPSHOT</eurekaclinical-common-version>
+        <eurekaclinical-standard-apis-version>4.1-Alpha-1-SNAPSHOT</eurekaclinical-standard-apis-version>
         <cas-mock-version>2.3</cas-mock-version>
         <tomcat.httpsPort>8443</tomcat.httpsPort>
     </properties>
